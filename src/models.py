@@ -21,8 +21,8 @@ class Follower(Base):
     __tablename__ = 'follower'
     
     id = Column(Integer, primary_key=True)
-    user_from_id= Column(Integer, Foreignkey("user.id"))
-    user_to_id= Column(Integer, Foreignkey("user.id"))
+    user_from_id= Column(Integer, ForeignKey("user.id"))
+    user_to_id= Column(Integer, ForeignKey("user.id"))
 
 
 class Comment(Base):
@@ -30,15 +30,15 @@ class Comment(Base):
    
     id = Column(Integer, primary_key=True)
     comment_text= Column(String(1000))
-    author_id = Column(Integer, Foreignkey("user.id"))
-    post_id= Column(Integer, Foreignkey("user.id"))
+    author_id = Column(Integer, ForeignKey("user.id"))
+    post_id= Column(Integer, ForeignKey("user.id"))
 
 
 class Post(Base):
     __tablename__ = 'post'
     
     id = Column(Integer, primary_key=True)
-    user_id= Column(Integer, Foreignkey("user.id"))
+    user_id= Column(Integer, ForeignKey("user.id"))
 
 class Media_Type(PyEnum):
    REEL = "reel"
@@ -51,7 +51,7 @@ class Media(Base):
     id = Column(Integer, primary_key=True)
     type= Column(Enum(Media_Type))
     url = Column(String(250))
-    post_id= Column(Integer, Foreignkey("post.id"))
+    post_id= Column(Integer, ForeignKey("post.id"))
 
 
 
